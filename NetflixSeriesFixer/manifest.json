@@ -1,0 +1,33 @@
+{
+  "name": "NetflixSeriesFixer",
+  "description": "Adds a Page Action to update the URL to the Series' Homepage (for bookmarking) and fixes the Document Title in various situations",
+  "version": "1.0",
+  "manifest_version": 3,
+  "icons":{
+    "16":"icons/16x16.png",
+    "32":"icons/32x32.png",
+    "48":"icons/48x48.png",
+    "128":"icons/128x128.png"
+  },
+
+  "permissions": [
+  ],
+  "host_permissions":[
+    "*://*.netflix.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action":{
+    "default_icon":{},
+    "default_title":"Update Page"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.netflix.com/*"],
+      "js":["titlefixer.js"],
+      "run_at":"document_end",
+      "world": "MAIN"
+    }
+  ]
+}
